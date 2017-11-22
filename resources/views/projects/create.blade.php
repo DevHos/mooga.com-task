@@ -75,6 +75,14 @@
 						        <input type="submit" class="btn orange-btn" value="اضافة مشروع جديد">
 						    </div>
 						</form>
+
+                        <div class="alert alert-error form-group">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
 					</div>
                 </div>
             </div>
