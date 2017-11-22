@@ -15,13 +15,9 @@ Route::get('/', 'ProjectsController@index');
 
 Auth::routes();
 
-//facebook login
-Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
-Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
-
+//routes for project
 Route::get('/projects', 'ProjectsController@index')->name('projects.all');
 Route::get('/projects/create', 'ProjectsController@create')->name('projects.create');
 Route::post('/projects/store', 'ProjectsController@store')->name('projects.store');
 Route::get('/projects/{project}', 'ProjectsController@show')->name('project.show');
 
-//Route::get('/home', 'HomeController@index')->name('projects.all');

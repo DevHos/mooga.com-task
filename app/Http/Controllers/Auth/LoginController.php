@@ -39,45 +39,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    /**
-     * Redirect the user to the Facebook authentication page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function redirectToProvider()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
-
-
-    /**
-     * Obtain the user information from Facebook.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function handleProviderCallback()
-    {
-        $userSocial = Socialite::driver('facebook')->user();
-        dd($userSocial);
-        $user = new User;
-
-        $findUser = $user->where('email', $userSocial->email)->first();
-
-        if ($findUser) {
-
-            Auth::login($findUser);
-
-        }else {
-
-            $user->name = $userSocial->name;
-            $user->job_title = $userSocial->name;
-            $user->username = $userSocial->name;
-            $user->email = $userSocial->email;
-            $user->password = bcrypt('165464');
-            $user->save();
-
-            Auth::login($user);
-        }
-    }
 }

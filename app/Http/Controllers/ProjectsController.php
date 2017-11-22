@@ -17,7 +17,7 @@ class ProjectsController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {   //all pages require auth except for the all projects and single project page
         $this->middleware('auth')->except(['index', 'show']);
     }
 
@@ -98,7 +98,7 @@ class ProjectsController extends Controller
             //path to year/month folder
             $date_path = public_path('images/projects/' . date('Y') . '/' . date('m'));
             $date_path_db = 'images/projects/' . date('Y') . '/' . date('m') . '/';
-            //check if date foler exists if not create it
+            //check if date folder exists if not create it
             if(!File::exists($date_path)) {
                 File::makeDirectory($date_path, 666, true);
             }

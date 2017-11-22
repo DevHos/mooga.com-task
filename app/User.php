@@ -32,8 +32,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class);
     }
-
-    public function is_owner($user) {
-        return $this->id === auth()->id();
-    }
 }
